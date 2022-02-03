@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using eVoting.App.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -66,16 +67,16 @@ namespace eVoting.App.Controllers
             }
         }
 
-        [HttpGet("SignIn")]
-        public async Task<IActionResult> SignIn()
+        [HttpPost("SignIn")]
+        public async Task<IActionResult> SignIn(SignInViewModel model)
         {
-            var result = await _signInManager.PasswordSignInAsync("kukadion1@gmail.com", "123456", true, lockoutOnFailure: false);
+            var result = await _signInManager.PasswordSignInAsync(model.Email,model.Password, true, lockoutOnFailure: false);
 
             if (result.Succeeded)
             {
-                return Ok();
+                return Ok(true);
             }
-            return Ok();
+            return Ok(false);
         }
         
         [HttpGet("Logout")]
