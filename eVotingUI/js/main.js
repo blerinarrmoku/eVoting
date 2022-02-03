@@ -1,3 +1,5 @@
+let _baseUrl = "https://localhost:44314/api";
+
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
@@ -35,7 +37,7 @@ $(document).ready(function () {
             password: _password
         };
         $.ajax({
-            url: 'https://localhost:44314/api/account/signin', 
+            url: _baseUrl+'/account/signin', 
             type: 'POST',
             contentType: "application/json",
             dataType: "json", 
