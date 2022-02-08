@@ -30,6 +30,7 @@ namespace eVoting.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var asd = "";
             var model = _context.Cities.ToList();
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
