@@ -34,11 +34,7 @@ $(document).ready(function () {
             data: JSON.stringify(_model),
             cache: false,
             success: function (result) {
-                if(result){
-                    alert("Successfully Signed In");
-                } else {
-                    alert("Email or Password incorrect");
-                }
+                alert(result.message);
                 $("#passwordSignIn").val("");
             }
         });
@@ -67,7 +63,12 @@ $(document).ready(function () {
             data: JSON.stringify(_model),
             cache: false,
             success: function (result) {
-               alert(result.message);
+                if(result == "error"){
+                    alert(result.message);
+                }else if(result == "success"){
+                    $("#signIn").click();
+                    alert(result.message);
+                }
             }
         });
     });

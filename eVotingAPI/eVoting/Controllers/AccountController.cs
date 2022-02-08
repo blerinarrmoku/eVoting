@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static eVoting.App.ViewModels.ReturnObject;
 
 namespace eVoting.App.Controllers
 {
@@ -26,13 +27,18 @@ namespace eVoting.App.Controllers
         [HttpPost("signin")]
         public async Task<ActionResult> SignIn(SignInViewModel model)
         {
+            var returnObject = new ReturnObject();
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, lockoutOnFailure: false);
 
             if (result.Succeeded)
             {
-                return Ok(true);
+                returnObject.Message = "Successfully Signed In";
+                returnObject.Type = "success";
+                return Ok(returnObject);
             }
-            return Ok(false);
+            returnObject.Message = "Something went wrong";
+            returnObject.Type = "error";
+            return Ok(returnObject);
         }
 
 
@@ -57,12 +63,14 @@ namespace eVoting.App.Controllers
                     if (userExist != null)
                     {
                         returnObject.Message = "Email is taken";
+                        returnObject.Type = "error";
                         return Ok(returnObject);
                     }
 
                     if (model.Password != model.ConfirmPassword)
                     {
                         returnObject.Message = "Password not matching";
+                        returnObject.Type = "error";
                         return Ok(returnObject);
                     }
 
@@ -71,6 +79,7 @@ namespace eVoting.App.Controllers
                     if (!result.Succeeded)
                     {
                         returnObject.Message = "Password not valid";
+                        returnObject.Type = "error";
                         return Ok(returnObject);
                     }
 
@@ -79,17 +88,20 @@ namespace eVoting.App.Controllers
                         //var role = await roleManager.FindByIdAsync("1");
                         //await userManager.AddToRoleAsync(user, role.Name);
                         returnObject.Message = "Successfully Signed Up";
+                        returnObject.Type = "success";
                         return Ok(returnObject);
                     }
 
                 }
                 returnObject.Message = "Something went wrong";
+                returnObject.Type = "error";
                 return Ok(returnObject);
             }
 
             catch (Exception ex)
             {
                 returnObject.Message = ex.Message;
+                returnObject.Type = "error";
                 return Ok(returnObject);
             }
         }

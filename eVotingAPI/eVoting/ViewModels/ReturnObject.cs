@@ -8,5 +8,7 @@ namespace eVoting.App.ViewModels
     public class ReturnObject
     {
         public string Message { get; set; }
+        public string Type { get; set; }
     }
+
 }
