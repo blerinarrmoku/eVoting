@@ -7,6 +7,11 @@ namespace eVoting.App.Models
 {
     public partial class Member
     {
+        public Member()
+        {
+            Votes = new HashSet<Vote>();
+        }
+
         public int Id { get; set; }
         public int PartyId { get; set; }
         public string Name { get; set; }
@@ -19,5 +24,6 @@ namespace eVoting.App.Models
         public DateTime? UpdateDateTime { get; set; }
 
         public virtual Party Party { get; set; }
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

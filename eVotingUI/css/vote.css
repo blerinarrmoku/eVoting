@@ -1,0 +1,27 @@
+h5{
+    margin-bottom: 0px;
+}
+
+.candidates .col-lg-12 .col-lg-2 div{
+    padding: 5px;
+}
+
+.candidateBox {
+    cursor: pointer;
+}
+
+.selectedCandidate{
+    background-color: #d3d3d3;
+}
+
+.borderBox {
+    border: 1px solid black;
+}
+
+.candidateParty{
+    cursor: pointer;
+}
+
+.selectedParty{
+    background-color: #d3d3d3;
+}
