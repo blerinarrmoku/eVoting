@@ -1,5 +1,4 @@
 ﻿using eVoting.App.Models;
-using eVoting.App.Validation;
 using eVoting.App.ViewModels;
 using eVoting.Model.Response;
 using eVoting.Model.Votes.Commands.CreateVote;
@@ -63,12 +62,6 @@ namespace eVoting.App.Controllers
         public async Task<ActionResult<ResponseModel<CreateVoteResponse>>> CreateVote(CreateVoteCommand createVoteCommand)
         {
             var response = new ResponseModel<CreateVoteResponse>();
-
-            if (!ModelState.IsValid)
-            {
-                response.AddErrors(ModelState.GetErrorMessages());
-                return Ok(response.Ok());
-            }
 
             var responseContent = await Mediator.Send(createVoteCommand);
             if (responseContent == null)
