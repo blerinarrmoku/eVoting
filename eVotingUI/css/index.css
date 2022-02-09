@@ -216,3 +216,7 @@
     z-index: 1;
     box-sizing: border-box;
   }
+
+#myFooter {
+  background-color: #dcddfc !important;
+}
