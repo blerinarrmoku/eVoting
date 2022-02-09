@@ -1,3 +1,4 @@
+using eVoting.App.Extensions.DependencyInjections;
 using eVoting.App.Models;
 using eVoting.Data;
 using Microsoft.AspNetCore.Builder;
@@ -43,6 +44,12 @@ namespace eVoting
             services.AddDbContext<EVotingContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddDbContext<Core.Repositories.DatabaseContexts.EVotingContext>(builder =>
+            //{
+            //    if (!builder.IsConfigured)
+            //        builder.UseSqlServer(Configuration.GetSection("Database").GetSection("eVotingConnectionString").Value);
+            //});
+
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
@@ -69,6 +76,10 @@ namespace eVoting
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eVoting", Version = "v1" });
             });
+
+            services.AddServices();
+            services.AddMediatR();
+            services.AddCommandHandlers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

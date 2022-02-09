@@ -1,5 +1,8 @@
 ﻿using eVoting.App.Models;
 using eVoting.App.ViewModels;
+using eVoting.Model.Response;
+using eVoting.Model.Votes.Commands.CreateVote;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,11 +15,12 @@ namespace eVoting.App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VotesController : ControllerBase
+    public class VotesController : BaseController
     {
         private readonly EVotingContext _context;
 
-        public VotesController(EVotingContext context)
+        public VotesController(
+            EVotingContext context, IMediator mediator) : base(mediator)
         {
             _context = context;
         }
@@ -42,11 +46,32 @@ namespace eVoting.App.Controllers
             return members;
         }
 
-        [HttpPost("Vote")]
-        public async Task<ActionResult> Vote(VotingViewModel model)
-        {
+        //[HttpPost("Vote")]
+        //public async Task<ResponseModel<ActionResult<bool>>> Vote(VotingViewModel model)
+        //{
+        //    var response = new ResponseModel<bool>();
+        //    if(model.CheckedCandidates.Count != 5)
+        //    {
+        //        return BadRequest(response.BadRequest());
+        //    }
 
-            return Ok(true);
+        //    return Ok(response.Ok(model));
+        //}
+
+        [HttpPost("Vote")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<ResponseModel<CreateVoteResponse>>> CreateVote(CreateVoteCommand createVoteCommand)
+        {
+            var response = new ResponseModel<CreateVoteResponse>();
+            if (createVoteCommand.CheckedCandidates.Count != 5)
+            {
+                return BadRequest(response.AddMessage("Number of selected must be 5").BadRequest());
+            }
+
+            var responseContent = await Mediator.Send(createVoteCommand);
+            return null;
+
         }
     }
 }
