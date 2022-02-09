@@ -1,12 +1,11 @@
 ﻿using eVoting.App.Models;
+using eVoting.App.Validation;
 using eVoting.App.ViewModels;
 using eVoting.Model.Response;
 using eVoting.Model.Votes.Commands.CreateVote;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -64,14 +63,18 @@ namespace eVoting.App.Controllers
         public async Task<ActionResult<ResponseModel<CreateVoteResponse>>> CreateVote(CreateVoteCommand createVoteCommand)
         {
             var response = new ResponseModel<CreateVoteResponse>();
-            if (createVoteCommand.CheckedCandidates.Count != 5)
+
+            if (!ModelState.IsValid)
             {
-                return BadRequest(response.AddMessage("Number of selected must be 5").BadRequest());
+                response.AddErrors(ModelState.GetErrorMessages());
+                return Ok(response.Ok());
             }
 
             var responseContent = await Mediator.Send(createVoteCommand);
-            return null;
+            if (responseContent == null)
+                return BadRequest(response.AddMessage("Error happened while creating vote!").BadRequest());
 
+            return Ok(response.AddMessage("Vote has been created").Ok(responseContent));
         }
     }
 }
