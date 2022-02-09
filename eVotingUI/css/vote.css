@@ -11,7 +11,7 @@ h5{
 }
 
 .selectedCandidate{
-    background-color: #d3d3d3;
+    background-color: #365885
 }
 
 .borderBox {
@@ -23,5 +23,22 @@ h5{
 }
 
 .selectedParty{
-    background-color: #d3d3d3;
+    background-color: #365885
 }
+#partiesRow
+{
+    background-color: #98b3d1;
+}
+#candidatesRow
+{
+    background-color: #98b3d1;
+
+}
+#candidateCheckboxes{
+    background-color: #d3dfed
+}
+#btnVote{
+    background-color: #365885; 
+    width: 100px;
+}
+
