@@ -62,6 +62,10 @@ namespace eVoting.App.Controllers
         public async Task<ActionResult<ResponseModel<CreateVoteResponse>>> CreateVote(CreateVoteCommand createVoteCommand)
         {
             var response = new ResponseModel<CreateVoteResponse>();
+            if(createVoteCommand.CandidateId == 0 || createVoteCommand.PartyId == 0 || createVoteCommand.CheckedCandidates.Count != 5)
+            {
+                return BadRequest(response.AddMessage("Parameters are not valid!").BadRequest());
+            }
 
             var responseContent = await Mediator.Send(createVoteCommand);
             if (responseContent == null)
