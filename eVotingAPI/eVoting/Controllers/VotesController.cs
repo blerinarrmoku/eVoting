@@ -5,6 +5,7 @@ using eVoting.Model.Votes.Commands.CreateVote;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,6 +33,22 @@ namespace eVoting.App.Controllers
             var model = new VotingList();
             model.Candidates = candidates;
             model.Parties = parties;
+
+            return model;
+        }
+
+        [HttpGet("GetCountedVotes")]
+        public CountedVotes GetCountedVotes()
+        {
+            var model = new CountedVotes();
+            model.Candidates = new List<string>();
+            model.Votes = new List<int>();
+            var members = _context.Votes.Include(t => t.Member).OrderByDescending(t => t.Count);
+            foreach(var item in members)
+            {
+                model.Candidates.Add(item.Member.Name);
+                model.Votes.Add(item.Count);
+            }
 
             return model;
         }
