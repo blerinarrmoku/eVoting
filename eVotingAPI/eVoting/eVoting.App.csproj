@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.3.6" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
@@ -22,6 +21,10 @@
   <ItemGroup>
     <ProjectReference Include="..\eVoting.Core\eVoting.Core.csproj" />
     <ProjectReference Include="..\Model\eVoting.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Framework\" />
   </ItemGroup>
 
 </Project>
