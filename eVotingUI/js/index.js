@@ -33,9 +33,9 @@ function toggleState3() {
 }
 
 let imgObject = [
+  "https://media.kasperskydaily.com/wp-content/uploads/sites/92/2020/10/16044143/M187_Digital-voting-header.png",
   "https://thefulcrum.us/media-library/online-voting.jpg?id=27414175&width=980",
   "https://caltechsites-prod.s3.amazonaws.com/scienceexchange/images/Caltech-Voting-Phone-Online-S.2e16d0ba.fill-933x525-c100.jpg",
-  "https://media.kasperskydaily.com/wp-content/uploads/sites/92/2020/10/16044143/M187_Digital-voting-header.png",
   "https://www.honestballot.com/wp-content/uploads/2019/11/38646453_S.jpg"
 ];
 

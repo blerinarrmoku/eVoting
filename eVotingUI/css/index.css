@@ -15,7 +15,7 @@
   }
   
   #container {
-    height: 100vh;
+    height: calc(100vh - 114px);
     width: 100%;
     box-sizing: border-box;
   }
@@ -223,4 +223,13 @@
 
 .nav-link{
   text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.navbar-nav:nth-child(1){
+  margin-left: 10px;
+}
+
+.nav-link.active{
+  color: #1c4f92!important;
 }
