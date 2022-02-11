@@ -39,6 +39,11 @@ namespace eVoting.App.Services.Votes
             return false;
         }
 
+        public async Task<IEnumerable<Vote>> GetMembersVotes()
+        {
+            return await _context.Votes.Include(t => t.Member).Where(t => t.Member.IsCandidate == true).OrderByDescending(t => t.Count).ToListAsync();
+        }
+
         public async Task<Vote> GetVoteByIdAsync(int id)
         {
             return await _context.Votes.Where(x => x.Id == id).FirstOrDefaultAsync();

@@ -10,8 +10,9 @@ $.ajax({
     cache: false,
     async: false,
     success: function (result) {
-        votes = result.votes;
-        names = result.candidates;
+      console.log(result);
+        votes = result.data.candidateVotes;
+        names = result.data.candidateNames;
     }
 });
 
