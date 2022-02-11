@@ -220,3 +220,7 @@
 #myFooter {
   background-color: #dcddfc !important;
 }
+
+.nav-link{
+  text-transform: uppercase;
+}
