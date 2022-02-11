@@ -71,9 +71,11 @@ namespace eVoting
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eVoting", Version = "v1" });
             });
 
+            services.AddMappingWithProfiles();
             services.AddServices();
             services.AddMediatR();
             services.AddCommandHandlers();
+            services.AddQueryHandlers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

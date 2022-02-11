@@ -1,5 +1,6 @@
 ﻿using eVoting.App.Models;
 using eVoting.App.ViewModels;
+using eVoting.Model.Cities.Queries.GetCities;
 using eVoting.Model.Response;
 using eVoting.Model.Votes.Commands.CreateVote;
 using MediatR;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace eVoting.App.Controllers
@@ -53,7 +55,7 @@ namespace eVoting.App.Controllers
             return model;
         }
 
-        [HttpGet("GetPartiesMembers")]
+        [HttpGet("GetPartiesMembers")] 
         public List<Member> GetPartiesMembers(int partyId)
         {
             var members = _context.Members.Where(t => t.IsDeleted == false && t.IsCandidate == false && t.PartyId == partyId).ToList();
@@ -61,20 +63,8 @@ namespace eVoting.App.Controllers
             return members;
         }
 
-        //[HttpPost("Vote")]
-        //public async Task<ResponseModel<ActionResult<bool>>> Vote(VotingViewModel model)
-        //{
-        //    var response = new ResponseModel<bool>();
-        //    if(model.CheckedCandidates.Count != 5)
-        //    {
-        //        return BadRequest(response.BadRequest());
-        //    }
-
-        //    return Ok(response.Ok(model));
-        //}
-
         [HttpPost("Vote")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<ResponseModel<CreateVoteResponse>>> CreateVote(CreateVoteCommand createVoteCommand)
         {
@@ -89,6 +79,20 @@ namespace eVoting.App.Controllers
                 return BadRequest(response.AddMessage("Error happened while creating vote!").BadRequest());
 
             return Ok(response.AddMessage("Vote has been created").Ok(responseContent));
+        }
+
+        [HttpGet("cities")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<ResponseModel<GetCitiesResult>>> GetCities(CancellationToken cancellationToken)
+        {
+            var response = new ResponseModel<GetCitiesResult>();
+
+            var responseContent = await Mediator.Send(new GetCitiesQuery(), cancellationToken);
+            if (responseContent != null)
+                return Ok(response.Ok(responseContent));
+
+            return NotFound(response.AddMessage("There is no city found").NotFound());
         }
     }
 }
