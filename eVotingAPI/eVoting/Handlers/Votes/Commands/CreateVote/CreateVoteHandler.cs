@@ -28,6 +28,7 @@ namespace eVoting.App.Handlers.Votes.Commands.CreateVote
 
         public async Task<CreateVoteResponse> Handle(CreateVoteCommand request, CancellationToken cancellationToken)
         {
+            // Pjesa per asambleist
             var candidates = await _memberService.GetMembersByIdsAsync(request.CheckedCandidates);
 
             foreach(var candidate in candidates)
@@ -52,6 +53,26 @@ namespace eVoting.App.Handlers.Votes.Commands.CreateVote
                     await _voteService.AddVoteAsync(vote);
                 }
             }
+            // Pjesa per Kryetar
+            var alreadyVoted = await _voteService.CheckIfMembersAlreadyHaveVotes(request.CandidateId);
+            if (alreadyVoted)
+            {
+                var actualVotesForCandidate = await _voteService.GetVotesByMemberIdAsync(request.CandidateId);
+                actualVotesForCandidate.Count++;
+            }
+            else
+            {
+                var mainCandidateVote = new Vote()
+                {
+                    Id = new(),
+                    InsertDateTime = DateTime.Now,
+                    UpdateDateTime = DateTime.Now,
+                    MemberId = request.CandidateId,
+                    Count = 1
+                };
+                await _voteService.AddVoteAsync(mainCandidateVote);
+            }
+            
             await _voteService.SaveChanges();
             return new CreateVoteResponse();
         }

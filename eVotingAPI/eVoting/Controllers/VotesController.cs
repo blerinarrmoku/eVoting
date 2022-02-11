@@ -45,7 +45,7 @@ namespace eVoting.App.Controllers
             var model = new CountedVotes();
             model.Candidates = new List<string>();
             model.Votes = new List<int>();
-            var members = _context.Votes.Include(t => t.Member).OrderByDescending(t => t.Count);
+            var members = _context.Votes.Include(t => t.Member).Where(t => t.Member.IsCandidate == true).OrderByDescending(t => t.Count);
             foreach(var item in members)
             {
                 model.Candidates.Add(item.Member.Name);
