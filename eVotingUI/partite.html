@@ -75,10 +75,10 @@
 											<div class="header-tabs overflow-auto mx-4 ms-lg-10 mb-5 mb-lg-0" id="kt_header_tabs" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_header_navs_wrapper', lg: '#kt_brand_tabs'}">
 												<ul class="nav flex-nowrap">
 													<li class="nav-item">
-														<a class="nav-link active" data-bs-toggle="tab" href="#kt_header_navs_tab_1">Anetaret</a>
+														<a class="nav-link" data-bs-toggle="tab" href="#kt_header_navs_tab_1">Anetaret</a>
 													</li>
 													<li class="nav-item">
-														<a class="nav-link" data-bs-toggle="tab" href="#kt_header_navs_tab_2">Partite</a>
+														<a class="nav-link active" data-bs-toggle="tab" href="#kt_header_navs_tab_2">Partite</a>
 													</li>
 													<li class="nav-item">
 														<a class="nav-link" data-bs-toggle="tab" href="#kt_header_navs_tab_3">Votat</a>
@@ -125,12 +125,12 @@
 								<!--begin::Header tab content-->
 								<div class="tab-content" data-kt-scroll="true" data-kt-scroll-activate="{default: true, lg: false}" data-kt-scroll-height="auto" data-kt-scroll-offset="70px">
 									<!--begin::Tab panel-->
-									<div class="tab-pane fade active show" id="kt_header_navs_tab_1">
+									<div class="tab-pane fade" id="kt_header_navs_tab_1">
 										<!--begin::Menu wrapper-->
 										<div class="header-menu flex-column align-items-stretch flex-lg-row">
 											<!--begin::Menu-->
 											<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold align-items-stretch flex-grow-1" id="#kt_header_menu" data-kt-menu="true">
-												<div class="menu-item show menu-lg-down-accordion me-lg-1">
+												<div class="menu-item menu-lg-down-accordion me-lg-1">
 													<a href="dashboard.html" class="menu-link py-3">
 														<span class="menu-title">Lista</span>
 													</a>
@@ -147,12 +147,12 @@
 									</div>
 									<!--end::Tab panel-->
 									<!--begin::Tab panel-->
-									<div class="tab-pane fade" id="kt_header_navs_tab_2">
+									<div class="tab-pane fade active show" id="kt_header_navs_tab_2">
 										<!--begin::Wrapper-->
 										<div class="header-menu flex-column align-items-stretch flex-lg-row">
 											<!--begin::Menu-->
 											<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold align-items-stretch flex-grow-1" id="#kt_header_menu" data-kt-menu="true">
-												<div class="menu-item menu-lg-down-accordion me-lg-1">
+												<div class="menu-item show menu-lg-down-accordion me-lg-1">
 													<a href="partite.html" class="menu-link py-3">
 														<span class="menu-title">Lista</span>
 													</a>
@@ -206,7 +206,7 @@
 								<!--begin::Card header-->
 								<div class="card-header">
 									<h3 class="card-title align-items-start flex-column">
-										Lista e Anetareve
+										Lista e Partive
 									</h3>
 								</div>
 								<!--end::Card header-->
@@ -215,11 +215,9 @@
 									<table id="tableData" class="table table-striped table-row-bordered gy-5 gs-7 border rounded align-middle">
 										<thead>
 											<tr class="fw-bolder fs-6 text-gray-800 px-7">
-												<th>Emri Mbiemri</th>
-												<th>Partia</th>
-												<th>Ditelindja</th>
-												<th>Vendi</th>
-												<th>Lloji</th>
+												<th>Foto</th>
+												<th>Emri</th>
+												<th>Shkurtesa</th>
 												<th>Action</th>
 											</tr>
 										</thead>
@@ -279,7 +277,7 @@
 		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--end::Javascript-->
-		<script src="js/dashboard.js"></script>
+		<script src="js/partite.js"></script>
 	</body>
 	<!--end::Body-->
 </html>
