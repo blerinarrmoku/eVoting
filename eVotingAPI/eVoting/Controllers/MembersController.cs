@@ -20,7 +20,7 @@ namespace eVoting.App.Controllers
         }
 
         [HttpPost("createMember")]
-        public async Task<ActionResult<ResponseModel<CreateMemberResponse>>> CreateVote(CreateMemberCommand createMemberCommand)
+        public async Task<ActionResult<ResponseModel<CreateMemberResponse>>> CreateMember(CreateMemberCommand createMemberCommand)
         {
             var response = new ResponseModel<CreateMemberResponse>();
 
@@ -30,5 +30,6 @@ namespace eVoting.App.Controllers
 
             return Ok(response.AddMessage("Member has been created").Ok(responseContent));
         }
+
     }
 }
