@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace eVoting.App.Framework.Mapping.Cities.Query
+namespace eVoting.App.Framework.Mapping.Cities.Queries
 {
     public class GetCitiesMappings : Profile
     {
