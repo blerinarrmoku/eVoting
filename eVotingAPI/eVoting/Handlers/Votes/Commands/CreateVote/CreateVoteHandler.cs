@@ -51,7 +51,6 @@ namespace eVoting.App.Handlers.Votes.Commands.CreateVote
                     {
                         var vote = new Vote()
                         {
-                            Id = new(),
                             InsertDateTime = DateTime.Now,
                             UpdateDateTime = DateTime.Now,
                             MemberId = candidate.Id,
@@ -71,7 +70,6 @@ namespace eVoting.App.Handlers.Votes.Commands.CreateVote
                 {
                     var mainCandidateVote = new Vote()
                     {
-                        Id = new(),
                         InsertDateTime = DateTime.Now,
                         UpdateDateTime = DateTime.Now,
                         MemberId = request.CandidateId,

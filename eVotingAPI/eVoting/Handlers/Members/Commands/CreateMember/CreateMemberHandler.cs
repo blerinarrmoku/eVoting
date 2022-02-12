@@ -28,7 +28,6 @@ namespace eVoting.App.Handlers.Members.Commands.CreateMember
         {
             var member = new Member()
             {
-                Id = new(),
                 Name = request.Name,
                 BirthDate = request.BirthDate,
                 BirthPlace = request.BirthPlace,
