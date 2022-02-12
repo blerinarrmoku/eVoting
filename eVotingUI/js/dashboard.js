@@ -1,7 +1,9 @@
 let _baseUrl = "https://localhost:44314/api";
 
 $(document).ready(function () {
-
+    let emailSignedIn = window.localStorage.getItem("email");
+    $("#emailSpace").html(emailSignedIn);
+    
     $.ajax({
         url: _baseUrl+'/members/allMembers/', 
         type: 'GET',
