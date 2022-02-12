@@ -31,6 +31,8 @@ namespace eVoting.App.Handlers.Members.Queries.GetMembers
             foreach (var member in members)
             {
                 var mapped = _mapper.Map<Model.Entities.Members.MemberEntity>(member);
+                mapped.PartyName = member.Party.Name;
+                mapped.BirthDateString = member.BirthDate.Value.ToString("dd/MM/yyyy");
                 result.Members.Add(mapped);
             }
 

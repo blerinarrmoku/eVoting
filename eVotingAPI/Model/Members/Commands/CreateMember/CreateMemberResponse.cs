@@ -2,6 +2,5 @@
 {
     public class CreateMemberResponse 
     {
-        public int MemberId { get; set; }
     }
 }

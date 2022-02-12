@@ -4,6 +4,8 @@ using eVoting.Model.Members.Commands.CreateMember;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -43,7 +45,7 @@ namespace eVoting.App.Handlers.Members.Commands.CreateMember
             if (inserted < 1)
                 return null;
 
-            return new CreateMemberResponse() { MemberId = member.Id };
+            return new CreateMemberResponse();
         }
     }
 }
