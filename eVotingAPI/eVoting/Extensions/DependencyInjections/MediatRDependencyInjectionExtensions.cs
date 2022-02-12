@@ -5,6 +5,7 @@ using eVoting.App.Extensions.DependencyInjections.MediatR.Cities.Queries;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Votes.Queries;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Users.Commands;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Members.Commands;
+using eVoting.App.Extensions.DependencyInjections.MediatR.Members.Queries;
 
 namespace eVoting.App.Extensions.DependencyInjections
 {
@@ -24,8 +25,9 @@ namespace eVoting.App.Extensions.DependencyInjections
         }
         public static void AddQueryHandlers(this IServiceCollection services)
         {
-            services.AddCitiesQuery();
+            services.GetCitiesQuery();
             services.GetVotesQueryHandlers();
+            services.GetMembersQueryHandlers();
         }
     }
 }

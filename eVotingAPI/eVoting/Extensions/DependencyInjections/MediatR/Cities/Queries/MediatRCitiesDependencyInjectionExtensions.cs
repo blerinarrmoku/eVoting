@@ -7,7 +7,7 @@ namespace eVoting.App.Extensions.DependencyInjections.MediatR.Cities.Queries
 {
     public static class MediatRCitiesDependencyInjectionExtensions
     {
-        public static void AddCitiesQuery(this IServiceCollection services)
+        public static void GetCitiesQuery(this IServiceCollection services)
         {
             services.AddTransient<IRequestHandler<GetCitiesQuery, GetCitiesResult>, GetCitiesHandler>();
         }
