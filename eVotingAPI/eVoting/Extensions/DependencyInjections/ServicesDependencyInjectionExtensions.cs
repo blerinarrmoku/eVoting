@@ -1,9 +1,11 @@
 ﻿using eVoting.App.Abstraction.Services.Cities;
 using eVoting.App.Abstraction.Services.Members;
 using eVoting.App.Abstraction.Services.Votes;
+using eVoting.App.Abstraction.Services.VotesHistory;
 using eVoting.App.Services.Cities;
 using eVoting.App.Services.Members;
 using eVoting.App.Services.Votes;
+using eVoting.App.Services.VotesHistory;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace eVoting.App.Extensions.DependencyInjections
@@ -15,6 +17,8 @@ namespace eVoting.App.Extensions.DependencyInjections
             services.AddTransient<IVoteService, VoteService>();
             services.AddTransient<IMemberService, MemberService>();
             services.AddTransient<ICityService, CityService>();
+
+            services.AddTransient<IVotesHistoryService, VotesHistoryService>();
         }
     }
 }

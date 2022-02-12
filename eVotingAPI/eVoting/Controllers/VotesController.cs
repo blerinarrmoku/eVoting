@@ -89,7 +89,7 @@ namespace eVoting.App.Controllers
 
             var responseContent = await Mediator.Send(createVoteCommand);
             if (responseContent == null)
-                return BadRequest(response.AddMessage("Error happened while creating vote!").BadRequest());
+                return BadRequest(response.AddMessage("User already voted!").BadRequest());
 
             return Ok(response.AddMessage("Vote has been created").Ok(responseContent));
         }
