@@ -26,10 +26,8 @@
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 		<style>
-			.actions button {
-				background: none;
-				background-color: none;
-				border: none;
+			.select2-selection__rendered {
+				color: black!important;
 			}
 		</style>
 	</head>
@@ -98,7 +96,7 @@
 												<!--begin::Name-->
 												<div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2 me-md-4">
 													<span class="text-white opacity-75 fs-8 fw-bold lh-1 mb-1">Signed In</span>
-													<span class="text-white fs-8 fw-bolder lh-1">kukadion1@gmail.com</span>
+													<span class="text-white fs-8 fw-bolder lh-1" id="emailSpace"></span>
 												</div>
 												<!--end::Name-->
 											</div>
@@ -255,9 +253,6 @@
                                                 <div class="form-group mb-5">
                                                     <label>Partia</label>
                                                     <select class="form-control" id="memberParty">
-                                                        <option value="">Zgjedh nje parti</option>
-                                                        <option value="1">PDK</option>
-                                                        <option value="2">LDK</option>
                                                     </select> 
                                                 </div>
                                             </div>

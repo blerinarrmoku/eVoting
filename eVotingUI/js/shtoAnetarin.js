@@ -1,9 +1,33 @@
 let _baseUrl = "https://localhost:44314/api";
 
 $(document).ready(function () {
+    let emailSignedIn = window.localStorage.getItem("email");
+    $("#emailSpace").html(emailSignedIn);
 
     $("#datePicker").flatpickr({
         dateFormat: "Y-m-d",
+    });
+
+    $.ajax({
+        url: _baseUrl+'/parties/allParties', 
+        type: 'GET',
+        contentType: "application/json",
+        dataType: "json",
+        cache: false,
+        success: function (result) {
+            let list = result.data.parties;
+            let options = "";
+            options += `<option value="">Zgjedh nje parti</option>`;
+            for(var i = 0;i < list.length;i++){
+                options +=
+                `
+                    <option value="${list[i].id}">${list[i].name}</option>
+                `
+            }
+            $("#memberParty").html("");
+            $("#memberParty").html(options);
+            $("#memberParty").select2();
+        }
     });
 
     $("#shtoAnetarinForm").submit(function( event ) {
