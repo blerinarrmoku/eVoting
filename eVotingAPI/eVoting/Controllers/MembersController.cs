@@ -1,5 +1,6 @@
 ﻿using eVoting.App.Models;
 using eVoting.Model.Members.Commands.CreateMember;
+using eVoting.Model.Members.Queries.GetMembers;
 using eVoting.Model.Response;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -31,5 +32,16 @@ namespace eVoting.App.Controllers
             return Ok(response.AddMessage("Member has been created").Ok(responseContent));
         }
 
+        [HttpGet("allMembers")]
+        public async Task<ActionResult<ResponseModel<GetMembersResult>>> GetMembers(GetMembersQuery getMembersQuery)
+        {
+            var response = new ResponseModel<GetMembersResult>();
+
+            var responseContent = await Mediator.Send(getMembersQuery);
+            if (responseContent == null)
+                return BadRequest(response.AddMessage("Error getting members!").BadRequest());
+
+            return Ok(response.Ok(responseContent));
+        }
     }
 }
