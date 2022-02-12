@@ -19,7 +19,6 @@ namespace eVoting.App.Extensions.DependencyInjections
             services.AddTransient<IVoteService, VoteService>();
             services.AddTransient<IMemberService, MemberService>();
             services.AddTransient<ICityService, CityService>();
-
             services.AddTransient<IVotesHistoryService, VotesHistoryService>();
             services.AddTransient<IUserService, UserService>();
         }
