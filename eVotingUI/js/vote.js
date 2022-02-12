@@ -10,6 +10,7 @@ $(document).ready(function () {
         cache: false,
         async: false,
         success: function (result) {
+            console.log(result);
             let candidates = result.candidates;
             let parties = result.parties;
             let candidateRow = "";
@@ -29,7 +30,7 @@ $(document).ready(function () {
                     </div>
                 `
             }
-            for(var i = 0;i < candidates.length;i++){
+            for(var i = 0;i < parties.length;i++){
                 partiesRow += 
                 `
                     <div class="col-lg-12 col-6">
@@ -103,6 +104,7 @@ $(document).ready(function () {
         var _candidateId = $(".selectedCandidate").attr("value");
         var _partyId = $(".selectedParty").attr("value");
         var checked = $('#candidateCheckboxes').find('input[type=checkbox]:checked');
+        var _userId = window.localStorage.getItem("userId");
         var array = [];
         for(var i = 0;i < checked.length;i++){
             array.push(checked[i].value);
@@ -110,7 +112,8 @@ $(document).ready(function () {
         var _data = {
             candidateId: _candidateId,
             partyId: _partyId,
-            checkedCandidates: array
+            checkedCandidates: array,
+            userId: _userId
         }
         $.ajax({
             url: _baseUrl+'/votes/vote', 

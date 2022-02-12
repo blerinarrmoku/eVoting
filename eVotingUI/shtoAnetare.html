@@ -130,12 +130,12 @@
 										<div class="header-menu flex-column align-items-stretch flex-lg-row">
 											<!--begin::Menu-->
 											<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold align-items-stretch flex-grow-1" id="#kt_header_menu" data-kt-menu="true">
-												<div class="menu-item show menu-lg-down-accordion me-lg-1">
+												<div class="menu-item menu-lg-down-accordion me-lg-1">
 													<a href="dashboard.html" class="menu-link py-3">
 														<span class="menu-title">Lista</span>
 													</a>
 												</div>
-												<div class="menu-item menu-lg-down-accordion me-lg-1">
+												<div class="menu-item show menu-lg-down-accordion me-lg-1">
 													<a href="shtoAnetare.html" class="menu-link py-3">
 														<span class="menu-title">Shto Anetare</span>
 													</a>
@@ -243,21 +243,59 @@
 								<!--end::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body">
-									<table id="tableData" class="table table-striped table-row-bordered gy-5 gs-7 border rounded align-middle">
-										<thead>
-											<tr class="fw-bolder fs-6 text-gray-800 px-7">
-												<th>Emri Mbiemri</th>
-												<th>Partia</th>
-												<th>Ditelindja</th>
-												<th>Vendi</th>
-												<th>Lloji</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody id="tableBody">
-											
-										</tbody>
-									</table>
+                                    <form id="shtoAnetarinForm">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-5">
+                                                    <label>Emri Mbiemri</label>
+                                                    <input type="text" class="form-control" id="memberName" placeholder="Emri Mbiemri">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-5">
+                                                    <label>Partia</label>
+                                                    <select class="form-control" id="memberParty">
+                                                        <option value="">Zgjedh nje parti</option>
+                                                        <option value="1">PDK</option>
+                                                        <option value="2">LDK</option>
+                                                    </select> 
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group mb-5">
+                                                    <label>Foto URL</label>
+                                                    <input type="text" class="form-control" id="memberFoto" placeholder="URL">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-5">
+                                                    <label>Data e lindjes</label>
+                                                    <input class="form-control" placeholder="Zgjedh nje date" id="datePicker"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group mb-5">
+                                                    <label>Vendi i lindjes</label>
+                                                    <input type="text" class="form-control" id="memberBirthPlace" placeholder="Vendi i lindjes">
+                                                </div>
+                                            </div>
+											<div class="col-lg-6">
+												<div class="form-group">
+													<div class="form-check form-switch form-check-custom form-check-solid">
+														<input class="form-check-input" type="checkbox" id="isCandidate" />
+														<label class="form-check-label" for="flexSwitchChecked">
+															A eshte kandidat
+														</label>
+													</div>
+												</div>
+											</div>
+                                            <div class="col-lg-6 text-end">
+                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                    Ruaj
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
 								</div>
 								<!--end::Card body-->
 							</div>
@@ -310,7 +348,7 @@
 		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--end::Javascript-->
-		<script src="js/dashboard.js"></script>
+		<script src="js/shtoAnetarin.js"></script>
 	</body>
 	<!--end::Body-->
 </html>
