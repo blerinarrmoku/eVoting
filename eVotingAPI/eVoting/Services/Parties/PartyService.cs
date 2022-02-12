@@ -26,5 +26,15 @@ namespace eVoting.App.Services.Parties
         {
             return await _context.Parties.Where(x => x.IsDeleted == false).ToListAsync();
         }
+
+        public async Task AddPartyAsync(Party party)
+        {
+            await _context.Parties.AddAsync(party);
+        }
+
+        public Task<int> SaveChanges()
+        {
+            return _context.SaveChangesAsync();
+        }
     }
 }

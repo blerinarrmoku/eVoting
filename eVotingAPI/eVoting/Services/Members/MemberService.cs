@@ -22,9 +22,9 @@ namespace eVoting.App.Services.Members
             _context = context;
         }
 
-        public async Task AddMemberAsync(Member vote)
+        public async Task AddMemberAsync(Member member)
         {
-            await _context.Members.AddAsync(vote);
+            await _context.Members.AddAsync(member);
         }
 
         public async Task<bool> DeleteMemberAsync(int id)
