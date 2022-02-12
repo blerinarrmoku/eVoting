@@ -35,6 +35,7 @@ namespace eVoting.App.Extensions.DependencyInjections
             services.GetMembersQueryHandlers();
             services.GetPartiesQueryHandlers();
             services.DeleteMemberQueryHandlers();
+            services.DeletePartyQueryHandlers();
         }
     }
 }

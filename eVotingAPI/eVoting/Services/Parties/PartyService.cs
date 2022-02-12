@@ -32,9 +32,17 @@ namespace eVoting.App.Services.Parties
             await _context.Parties.AddAsync(party);
         }
 
-        public Task<int> SaveChanges()
+        public async Task<int> SaveChanges()
         {
-            return _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
+        }
+
+        public async Task<Party> DeleteParty(int id)
+        {
+            var model = await _context.Parties.FindAsync(id);
+            model.IsDeleted = true;
+            _context.Update(model);
+            return model;
         }
     }
 }
