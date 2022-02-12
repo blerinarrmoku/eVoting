@@ -8,6 +8,7 @@ using eVoting.App.Extensions.DependencyInjections.MediatR.Members.Commands;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Members.Queries;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Parties.Queries;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Parties.Commands;
+using eVoting.App.Extensions.DependencyInjections.MediatR.Contacts.Commands;
 
 namespace eVoting.App.Extensions.DependencyInjections
 {
@@ -24,6 +25,7 @@ namespace eVoting.App.Extensions.DependencyInjections
             services.AddUsersCommandHandlers();
             services.AddMembersCommandHandlers();
             services.AddPartyCommandHandlers();
+            services.AddContactsQuery();
 
         }
         public static void AddQueryHandlers(this IServiceCollection services)
