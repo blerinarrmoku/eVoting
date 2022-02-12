@@ -32,7 +32,8 @@ namespace eVoting.App.Services.Members
             var memberToDelete = await GetMemberByIdAsync(id);
             if (memberToDelete != null)
             {
-                _context.Remove(memberToDelete);
+                memberToDelete.IsDeleted = true;
+                _context.Members.Update(memberToDelete);
                 return true;
             }
 

@@ -39,17 +39,17 @@ $(document).ready(function () {
     $(".btnDelete").on("click",function(){
         var id = $(this).attr("value");
         alert(id);
-        // $.ajax({
-        //     url: _baseUrl+'/members/deleteMember/'+id, 
-        //     type: 'GET',
-        //     contentType: "application/json",
-        //     dataType: "json",
-        //     cache: false,
-        //     async: false,
-        //     success: function (result) {
-                
-        //     }
-        // });
+        $.ajax({
+            url: _baseUrl+'/members/deleteMember?id='+id, 
+            type: 'GET',
+            contentType: "application/json",
+            dataType: "json",
+            cache: false,
+            async: false,
+            success: function (result) {
+                window.location.href = "/dashboard.html";
+            }
+        });
     });
 
 
