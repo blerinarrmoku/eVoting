@@ -33,11 +33,11 @@ namespace eVoting.App.Controllers
         }
 
         [HttpGet("allMembers")]
-        public async Task<ActionResult<ResponseModel<GetMembersResult>>> GetMembers(GetMembersQuery getMembersQuery)
+        public async Task<ActionResult<ResponseModel<GetMembersResult>>> GetMembers()
         {
             var response = new ResponseModel<GetMembersResult>();
 
-            var responseContent = await Mediator.Send(getMembersQuery);
+            var responseContent = await Mediator.Send(new GetMembersQuery());
             if (responseContent == null)
                 return BadRequest(response.AddMessage("Error getting members!").BadRequest());
 

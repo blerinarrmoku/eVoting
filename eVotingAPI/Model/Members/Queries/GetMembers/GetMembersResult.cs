@@ -5,6 +5,6 @@ namespace eVoting.Model.Members.Queries.GetMembers
 {
     public class GetMembersResult
     {
-        public List<MemberEntity> Members { get; set; }
+        public List<MemberEntity> Members { get; set; } = new();
     }
 }
