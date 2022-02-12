@@ -1,11 +1,9 @@
 ﻿using eVoting.App.Models;
+using eVoting.Model.Parties.Commands.CreateParty;
 using eVoting.Model.Parties.Queries.GetParties;
 using eVoting.Model.Response;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace eVoting.App.Controllers
@@ -32,6 +30,18 @@ namespace eVoting.App.Controllers
                 return BadRequest(response.AddMessage("Error getting parties!").BadRequest());
 
             return Ok(response.Ok(responseContent));
+        }
+
+        [HttpPost("createParty")]
+        public async Task<ActionResult<ResponseModel<CreatePartyResponse>>> CreateMember(CreatePartyCommand createMemberCommand)
+        {
+            var response = new ResponseModel<CreatePartyResponse>();
+
+            var responseContent = await Mediator.Send(createMemberCommand);
+            if (responseContent == null)
+                return BadRequest(response.AddMessage("Error creating party!").BadRequest());
+
+            return Ok(response.AddMessage("Party has been created").Ok(responseContent));
         }
     }
 }
