@@ -6,6 +6,6 @@ namespace eVoting.App.Abstraction.Services.Parties
 {
     public interface IPartyService
     {
-        Task<List<Party>> GetMembersAsync();
+        Task<List<Party>> GetPartiesAsync();
     }
 }

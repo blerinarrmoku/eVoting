@@ -46,7 +46,7 @@ namespace eVoting.App.Services.Members
 
         public async Task<List<Models.Member>> GetMembersAsync()
         {
-            return await _context.Members.Include(t => t.Party).ToListAsync();
+            return await _context.Members.Include(t => t.Party).Where(x => x.IsDeleted == false).ToListAsync();
         }
 
         public Task<List<Member>> GetMembersByIdsAsync(List<int> ids)

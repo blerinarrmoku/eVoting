@@ -6,6 +6,7 @@ using eVoting.App.Extensions.DependencyInjections.MediatR.Votes.Queries;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Users.Commands;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Members.Commands;
 using eVoting.App.Extensions.DependencyInjections.MediatR.Members.Queries;
+using eVoting.App.Extensions.DependencyInjections.MediatR.Parties.Queries;
 
 namespace eVoting.App.Extensions.DependencyInjections
 {
@@ -28,6 +29,7 @@ namespace eVoting.App.Extensions.DependencyInjections
             services.GetCitiesQuery();
             services.GetVotesQueryHandlers();
             services.GetMembersQueryHandlers();
+            services.GetPartiesQueryHandlers();
         }
     }
 }
