@@ -1,52 +1,31 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
-<!--<![endif]-->
 <head>
-
-<!-- Basic Page Needs ================================================== 
-================================================== -->
-
 <meta charset="utf-8">
-<title>Freebix Responsive Site Template</title>
+<title>eVoting </title>
 <meta name="description" content="Place to put your description text">
 <meta name="author" content="">
-<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-<!-- Mobile Specific Metas ================================================== 
-================================================== -->
-
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-
-<!-- CSS ==================================================
-================================================== -->
-
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/skeleton.css">
 <link rel="stylesheet" href="css/screen.css">
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
 
-<!-- Favicons ==================================================
-================================================== -->
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+.slides img {
+	width: 100%;
+	object-fit: cover;
+}
+</style>
 <link rel="shortcut icon" href="images/kqzLogo.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
 <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 
-<!-- Google Fonts ==================================================
-================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-
-<!--Content Part ==================================================
-================================================== -->
 <div id="header">
     <div class="container"> 
       <div class="logo"><a href="index.html"><img style="width: 80px;" src="images/kqzLogo.png" alt="" /></a></div>
@@ -58,9 +37,6 @@
             <li><a href="contact.html" id="visited">Contact</a></li>
           </ul>
         </div>
-        <!-- mainmenu ends here --> 
-        
-        <!-- Responsive Menu -->
         <form id="responsive-menu" action="#" method="post">
           <select>
             <option value="">Navigation</option>
@@ -70,78 +46,67 @@
           </select>
         </form>
       </div>
-      <!-- mainmenu ends here --> 
+
     </div>
-    <!-- container ends here --> 
+
   </div>
-<!-- header ends here --> 
-<!--Breadcrumbs ==================================================
-================================================== -->
+
 <div class="breadcrumbs">
   <div class="container">
     <header>
-      <h3>Contact Page</h3>
-      <p>- Free, fully <span class="pink">responsive HTML</span> site template made by <a href="http://www.anarieldesign.com/" rel="nofollow"><strong>Anariel Design</strong></a> -</p>
+      <h3>Kontakti</h3>
+    
     </header>
   </div>
   <!-- container ends here -->
   <hr class="separator1">
 </div>
-<!-- breadcrumbs ends here --> 
-<!-- Contact Content Part - GoogleMap ==================================================
-================================================== -->
 <section class="map"> 
-  <!-- google map -->
+
   <div class="map-holder">
     <div class="map-container">
-      <iframe class="map" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Munich,+Germany&amp;aq=0&amp;oq=M%C3%BCnchen&amp;sll=37.0625,-95.677068&amp;sspn=53.212719,135.263672&amp;ie=UTF8&amp;hq=&amp;hnear=Munich,+Upper+Bavaria,+Bavaria,+Germany&amp;t=m&amp;ll=48.23565,11.596069&amp;spn=0.347588,2.635345&amp;z=10&amp;iwloc=A&amp;output=embed"></iframe>
-      <!-- end google map --> 
+      <iframe class="map" src="https://maps.google.com/maps?q=Komisioni%20Zgjedhor%20i%20Zgjedhjeve&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
     </div>
-    <!--map-container ends here--> 
+
   </div>
   <!--map-holder ends here--> 
 </section>
 
-<!-- Contact Content Part - Contact Form ==================================================
-================================================== -->
 <div class="container contact"> 
-  <!-- Contact Sidebar ==================================================
-================================================== -->
+
   <div class="one_third">
-    <h3>Our Info</h3>
+    <h3>Informata rreth nesh</h3>
     <section class="first shadow">
       <ul>
-        <li>123456 Street Name, London</li>
-        <li>Phone: (1800) 987-12341</li>
-        <li>Fax: (1800) 987-12341</li>
-        <li>Website: <a href="#" title="">http://yoursitename.com</a></li>
-        <li>Email: <a href="#" title="">info@freebix.com</a></li>
+        <li>Adresa: Migjeni, Prishtinë 10000</li>
+        <li>Tel: +381 38 211337</li>
+        <li>Email: <a href="#" title="">info@kqz.kosovo.al</a></li>
       </ul>
     </section>
   </div>
   <!-- one_third ends here -->
   <div class="two_third lastcolumn contact1">
     <div id="contactForm">
-      <h3>Contact us</h3>
+      <h3>Na kontaktoni</h3>
       <div class="sepContainer"></div>
       <form action="process.php" method="post" id="contact_form">
         <div class="name">
-          <label for="name">Your Name:</label>
-          <p> Please enter your full name</p>
-          <input id=name name=email type=text placeholder="e.g. Mr. John Smith" required />
+          <label for="name">Emri:</label>
+          <p> Ju lutem shënoni emrin më poshtë:</p>
+          <input id=name name=email type=text placeholder="e.g. Mr. Dion Kuka" required />
         </div>
         <div class="email">
-          <label for="email">Your Email:</label>
-          <p> Please enter your email address</p>
-          <input id=email name=email type=email placeholder="example@domain.com" required />
+          <label for="email">Email:</label>
+          <p> Ju lutem shënoni email më poshtë: </p>
+          <input id=email name=email type=email placeholder="dionkuka@gmail.com" required />
         </div>
         <div class="message">
-          <label for="message">Your Message:</label>
-          <p> Please enter your question</p>
+          <label for="message">Mesazhi juaj:</label>
+          <p> Ju lutem shënoni pyetjen tuaj më poshtë:</p>
           <textarea id=message name=message rows=6 cols=10 required></textarea>
         </div>
         <div id="loader">
-          <input type="submit" value="Submit" />
+          <button type="submit" class="btn btn-info">Submit</button>
         </div>
       </form>
     </div>
@@ -216,11 +181,10 @@
     <!-- container ends here --> 
   </div>
 <!-- footer ends here --> 
-<!-- Copyright ==================================================
-================================================== -->
+
 <div id="copyright">
   <div class="container">
-    <p class="copyright">&copy; Copyright 2013. &quot;Freebix&quot; by <a href="http://www.anarieldesign.com/" rel="nofollow">Anariel Design</a>. All rights reserved.</p>
+    <p class="copyright">&copy; Copyright 2022.</p>
   </div>
   <!-- container ends here --> 
 </div>
