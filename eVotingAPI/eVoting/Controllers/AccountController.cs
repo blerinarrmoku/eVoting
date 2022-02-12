@@ -1,4 +1,7 @@
 ﻿using eVoting.App.ViewModels;
+using eVoting.Model.Response;
+using eVoting.Model.Users.Commands.SignIn;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,22 +15,23 @@ namespace eVoting.App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : BaseController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
 
         public AccountController(SignInManager<IdentityUser> signInManager,
-                                 UserManager<IdentityUser> userManager)
+                                 UserManager<IdentityUser> userManager, 
+                                 IMediator mediator) : base(mediator)
         {
             _signInManager = signInManager;
             _userManager = userManager;
         }
 
-        [HttpPost("signin")]
+        /*[HttpPost("signin")]
         public async Task<ActionResult> SignIn(SignInViewModel model)
         {
-            var returnObject = new ReturnObject();
+            var returnObject = new ReturnObject();  
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, lockoutOnFailure: false);
 
             if (result.Succeeded)
@@ -39,8 +43,23 @@ namespace eVoting.App.Controllers
             returnObject.Message = "Something went wrong";
             returnObject.Type = "error";
             return Ok(returnObject);
-        }
+        }*/
 
+        [HttpPost("signin")]
+        public async Task<ActionResult<ResponseModel<SignInResponse>>> CreateVote(SignInCommand signInCommand)
+        {
+            var response = new ResponseModel<SignInResponse>();
+            if (signInCommand.Email == null || signInCommand.Password == null)
+            {
+                return BadRequest(response.AddMessage("Parameters are not valid!").BadRequest());
+            }
+
+            var responseContent = await Mediator.Send(signInCommand);
+            if (responseContent == null)
+                return BadRequest(response.AddMessage("Error happened while signing in!").BadRequest());
+
+            return Ok(response.AddMessage("Sign in successfully").Ok(responseContent));
+        }
 
         [HttpPost("register")]
         public async Task<ActionResult> Register(SignUpViewModel model)

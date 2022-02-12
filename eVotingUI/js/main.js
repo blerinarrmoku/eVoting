@@ -34,8 +34,15 @@ $(document).ready(function () {
             data: JSON.stringify(_model),
             cache: false,
             success: function (result) {
+                console.log(result);
                 alert(result.message);
-                $("#passwordSignIn").val("");
+                if(result.statusCode == 200){
+                    window.localStorage.setItem("userId",result.data.userId);
+                    window.localStorage.setItem("email",result.data.email);
+                    window.location.href = "Index.html";
+                }else{
+                    $("#passwordSignIn").val("");
+                }
             }
         });
     });
