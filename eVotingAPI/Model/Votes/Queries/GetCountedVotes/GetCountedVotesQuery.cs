@@ -9,6 +9,6 @@ namespace eVoting.Model.Votes.Queries.GetCountedVotes
 {
     public class GetCountedVotesQuery : IRequest<GetCountedVotesResult>
     {
-
+        public bool IsCandidate { get; set; }
     }
 }

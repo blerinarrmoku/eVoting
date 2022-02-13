@@ -22,7 +22,7 @@ namespace eVoting.App.Handlers.Votes.Queries.GetCountedVotes
 
         public async  Task<GetCountedVotesResult> Handle(GetCountedVotesQuery request, CancellationToken cancellationToken)
         {
-            var members = await _voteService.GetMembersVotes();
+            var members = await _voteService.GetMembersVotes(request.IsCandidate);
 
             var model = new GetCountedVotesResult();
 
