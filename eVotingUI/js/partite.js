@@ -36,7 +36,6 @@ $(document).ready(function () {
 
     $(".btnDelete").on("click",function(){
         var id = $(this).attr("value");
-        alert(id);
         $.ajax({
             url: _baseUrl+'/parties/deleteParty?id='+id, 
             type: 'GET',
