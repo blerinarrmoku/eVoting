@@ -1,12 +1,15 @@
-﻿using eVoting.App.Models;
+﻿
+using eVoting.App.Models;
 using eVoting.App.ViewModels;
 using eVoting.Model.Cities.Queries.GetCities;
 using eVoting.Model.Response;
 using eVoting.Model.Votes.Commands.CreateVote;
 using eVoting.Model.Votes.Queries.GetCountedVotes;
+using eVoting.Model.Votes.Queries.GetValidVotes;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -105,6 +108,20 @@ namespace eVoting.App.Controllers
                 return Ok(response.Ok(responseContent));
 
             return NotFound(response.AddMessage("There is no city found").NotFound());
+        }
+
+        [HttpGet("votesChain")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<ResponseModel<GetValidVotesResult>>> GetValidVotes(CancellationToken cancellationToken)
+        {
+            var response = new ResponseModel<GetValidVotesResult>();
+
+            var responseContent = await Mediator.Send(new GetValidVotesQuery(), cancellationToken);
+            if (responseContent != null)
+                return Ok(response.Ok(responseContent));
+
+            return NotFound(response.AddMessage("There is no vote found").NotFound());
         }
     }
 }
