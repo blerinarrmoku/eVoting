@@ -25,6 +25,7 @@ namespace eVoting.App.Models
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
         public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Member> Members { get; set; }
         public virtual DbSet<Party> Parties { get; set; }
         public virtual DbSet<Vote> Votes { get; set; }
@@ -137,6 +138,25 @@ namespace eVoting.App.Models
                 entity.Property(e => e.Name).IsRequired();
 
                 entity.Property(e => e.UpdatedDateTime).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Contact>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Contact");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(250);
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Message).IsRequired();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(250);
             });
 
             modelBuilder.Entity<Member>(entity =>
