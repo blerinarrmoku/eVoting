@@ -26,7 +26,7 @@ namespace eVoting.App.Handlers.Votes.Queries.GetValidVotes
         public async Task<GetValidVotesResult> Handle(GetValidVotesQuery request, CancellationToken cancellationToken)
         {
             var response = new GetValidVotesResult();
-            var members = await _voteService.GetMembersVotes();
+            var members = await _voteService.GetMembersVotes(true);
 
             Random rnd = new Random(DateTime.UtcNow.Millisecond);
             IBlock genesis = new Block(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00 });
