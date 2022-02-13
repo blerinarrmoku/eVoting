@@ -14,7 +14,7 @@ namespace eVoting.App.Abstraction.Services.Votes
 
         Task<bool> CheckIfMembersAlreadyHaveVotes(int memberId);
 
-        Task<IEnumerable<Vote>> GetMembersVotes();
+        Task<IEnumerable<Vote>> GetMembersVotes(bool IsCandidate);
 
         Task AddVoteAsync(Vote vote);
 

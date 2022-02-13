@@ -10,7 +10,6 @@ $(document).ready(function () {
         cache: false,
         async: false,
         success: function (result) {
-            console.log(result);
             let candidates = result.candidates;
             let parties = result.parties;
             let candidateRow = "";
@@ -123,7 +122,7 @@ $(document).ready(function () {
             data: JSON.stringify(_data),
             cache: false,
             success: function (result) {
-                console.log(result);
+                console.log(result.status);
             }
         });
     });

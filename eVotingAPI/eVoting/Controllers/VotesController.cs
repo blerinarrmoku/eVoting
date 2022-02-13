@@ -42,28 +42,12 @@ namespace eVoting.App.Controllers
             return model;
         }
 
-        //[HttpGet("GetCountedVotes")]
-        //public CountedVotes GetCountedVotes()
-        //{
-        //    var model = new CountedVotes();
-        //    model.Candidates = new List<string>();
-        //    model.Votes = new List<int>();
-        //    var members = _context.Votes.Include(t => t.Member).Where(t => t.Member.IsCandidate == true).OrderByDescending(t => t.Count);
-        //    foreach (var item in members)
-        //    {
-        //        model.Candidates.Add(item.Member.Name);
-        //        model.Votes.Add(item.Count);
-        //    }
-
-        //    return model;
-        //}
-
         [HttpGet("GetCountedVotes")]
-        public async Task<ActionResult<ResponseModel<GetCountedVotesResult>>> GetCountedVotes(CancellationToken cancellationToken)
+        public async Task<ActionResult<ResponseModel<GetCountedVotesResult>>> GetCountedVotes(bool IsCandidate,CancellationToken cancellationToken)
         {
             var response = new ResponseModel<GetCountedVotesResult>();
 
-            var responseContent = await Mediator.Send(new GetCountedVotesQuery(), cancellationToken);
+            var responseContent = await Mediator.Send(new GetCountedVotesQuery() { IsCandidate = IsCandidate }, cancellationToken);
             if (responseContent != null)
                 return Ok(response.Ok(responseContent));
 

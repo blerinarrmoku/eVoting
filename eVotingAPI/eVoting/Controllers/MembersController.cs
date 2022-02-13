@@ -1,5 +1,6 @@
 ﻿using eVoting.App.Models;
 using eVoting.Model.Members.Commands.CreateMember;
+using eVoting.Model.Members.Queries.DeleteMember;
 using eVoting.Model.Members.Queries.GetMembers;
 using eVoting.Model.Response;
 using MediatR;
@@ -40,6 +41,18 @@ namespace eVoting.App.Controllers
             var responseContent = await Mediator.Send(new GetMembersQuery());
             if (responseContent == null)
                 return BadRequest(response.AddMessage("Error getting members!").BadRequest());
+
+            return Ok(response.Ok(responseContent));
+        }
+
+        [HttpGet("deleteMember")]
+        public async Task<ActionResult<ResponseModel<DeleteMemberResult>>> DeleteMember(int id)
+        {
+            var response = new ResponseModel<DeleteMemberResult>();
+
+            var responseContent = await Mediator.Send(new DeleteMemberQuery() { Id = id });
+            if (responseContent == null)
+                return BadRequest(response.AddMessage("Error deleting member!").BadRequest());
 
             return Ok(response.Ok(responseContent));
         }

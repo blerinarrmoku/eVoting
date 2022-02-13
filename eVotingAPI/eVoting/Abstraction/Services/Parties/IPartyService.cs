@@ -10,5 +10,6 @@ namespace eVoting.App.Abstraction.Services.Parties
 
         Task AddPartyAsync(Party party);
         Task<int> SaveChanges();
+        Task<Party> DeleteParty(int id);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using eVoting.App.Models;
 using eVoting.Model.Parties.Commands.CreateParty;
+using eVoting.Model.Parties.Queries.DeleteParty;
 using eVoting.Model.Parties.Queries.GetParties;
 using eVoting.Model.Response;
 using MediatR;
@@ -42,6 +43,18 @@ namespace eVoting.App.Controllers
                 return BadRequest(response.AddMessage("Error creating party!").BadRequest());
 
             return Ok(response.AddMessage("Party has been created").Ok(responseContent));
+        }
+
+        [HttpGet("deleteParty")]
+        public async Task<ActionResult<ResponseModel<DeletePartyResult>>> DeleteParty(int id)
+        {
+            var response = new ResponseModel<DeletePartyResult>();
+
+            var responseContent = await Mediator.Send(new DeletePartyQuery() { Id = id });
+            if (responseContent == null)
+                return BadRequest(response.AddMessage("Error deleting party!").BadRequest());
+
+            return Ok(response.Ok(responseContent));
         }
     }
 }

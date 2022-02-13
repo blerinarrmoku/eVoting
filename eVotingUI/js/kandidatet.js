@@ -1,16 +1,20 @@
 let _baseUrl = "https://localhost:44314/api";
+
+let emailSignedIn = window.localStorage.getItem("email");
+$("#emailSpace").html(emailSignedIn);
+
 var votes = [];
 var names = [];
 
 $.ajax({
     url: _baseUrl+'/votes/GetCountedVotes', 
     type: 'GET',
+    data: {isCandidate: true},
     contentType: "application/json",
     dataType: "json",
     cache: false,
     async: false,
     success: function (result) {
-      console.log(result);
         votes = result.data.candidateVotes;
         names = result.data.candidateNames;
     }
