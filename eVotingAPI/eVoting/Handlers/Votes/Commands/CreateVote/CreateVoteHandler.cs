@@ -78,6 +78,13 @@ namespace eVoting.App.Handlers.Votes.Commands.CreateVote
                     await _voteService.AddVoteAsync(mainCandidateVote);
                 }
                 await _voteService.SaveChanges();
+
+                // Pjesa e User-it qe ka votuar
+                var newUserVoted = new VotesHistory();
+                newUserVoted.UserId = request.UserId;
+                newUserVoted.VotedDateTime = DateTime.Now;
+                await _votesHistoryService.AddVoteHistoryAsync(newUserVoted);
+                await _votesHistoryService.SaveChanges();
                 return new CreateVoteResponse();
             }
             else

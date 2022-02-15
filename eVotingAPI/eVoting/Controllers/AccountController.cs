@@ -1,6 +1,7 @@
 ﻿using eVoting.App.ViewModels;
 using eVoting.Model.Response;
 using eVoting.Model.Users.Commands.SignIn;
+using eVoting.Model.Users.Queries.UserVoted;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,25 +25,8 @@ namespace eVoting.App.Controllers
             _userManager = userManager;
         }
 
-        /*[HttpPost("signin")]
-        public async Task<ActionResult> SignIn(SignInViewModel model)
-        {
-            var returnObject = new ReturnObject();  
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, true, lockoutOnFailure: false);
-
-            if (result.Succeeded)
-            {
-                returnObject.Message = "Successfully Signed In";
-                returnObject.Type = "success";
-                return Ok(returnObject);
-            }
-            returnObject.Message = "Something went wrong";
-            returnObject.Type = "error";
-            return Ok(returnObject);
-        }*/
-
         [HttpPost("signin")]
-        public async Task<ActionResult<ResponseModel<SignInResponse>>> CreateVote(SignInCommand signInCommand)
+        public async Task<ActionResult<ResponseModel<SignInResponse>>> SignIn(SignInCommand signInCommand)
         {
             var response = new ResponseModel<SignInResponse>();
             if (signInCommand.Email == null || signInCommand.Password == null)
@@ -121,6 +105,21 @@ namespace eVoting.App.Controllers
             }
         }
 
+        [HttpGet("userVoted")]
+        public async Task<ActionResult<ResponseModel<UserVotedResult>>> UserVoted(string userId)
+        {
+            var response = new ResponseModel<UserVotedResult>();
+            if (userId == null)
+            {
+                return BadRequest(response.AddMessage("Parameters are not valid!").BadRequest());
+            }
+
+            var responseContent = await Mediator.Send(new UserVotedQuery { UserId = userId });
+            if (responseContent == null)
+                return BadRequest(response.AddMessage("Error happened!").BadRequest());
+
+            return Ok(response.AddMessage("User Founded").Ok(responseContent));
+        }
 
     }
 }

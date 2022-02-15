@@ -291,3 +291,6 @@ select {
 .right {
 	float: right;
 }
+.d-none{
+	display: none;
+}

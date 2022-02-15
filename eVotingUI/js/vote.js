@@ -2,6 +2,23 @@ let _baseUrl = "https://localhost:44314/api";
 
 $(document).ready(function () {
 
+    let userId = window.localStorage.getItem("userId");
+    if(userId != null){
+        $.ajax({
+            url: _baseUrl+'/account/userVoted?userId='+userId, 
+            type: 'GET',
+            contentType: "application/json",
+            dataType: "json",
+            cache: false,
+            async: false,
+            success: function (result) {
+                if(result.data.userVoted){
+                    window.location.href = "/Index.html"
+                }
+            }
+        });
+    }
+
     $.ajax({
         url: _baseUrl+'/votes/GetVotingList', 
         type: 'GET',

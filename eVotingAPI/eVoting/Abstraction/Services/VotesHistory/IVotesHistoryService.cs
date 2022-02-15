@@ -4,8 +4,8 @@ namespace eVoting.App.Abstraction.Services.VotesHistory
 {
     public interface IVotesHistoryService
     {
-        Task<Models.VotesHistory> GetVotesHistoryByUserId(string userId);
-
+        Task AddVoteHistoryAsync(eVoting.App.Models.VotesHistory vote);
         Task<bool> UserAlreadyVoted(string userId);
+        Task<int> SaveChanges();
     }
 }

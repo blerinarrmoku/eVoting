@@ -1,5 +1,3 @@
-let _baseUrl = "https://localhost:44314/api";
-
 $(document).ready(function () {
     $("#contact_form").submit(function(event) {
         event.preventDefault();

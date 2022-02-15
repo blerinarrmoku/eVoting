@@ -22,14 +22,20 @@ namespace eVoting.App.Services.VotesHistory
             _context = context;
         }
 
-        public async Task<Models.VotesHistory> GetVotesHistoryByUserId(string userId)
+        public async Task AddVoteHistoryAsync(Models.VotesHistory vote)
         {
-            return await _context.VotesHistories.Where(x => x.UserId == userId).FirstOrDefaultAsync();
+            await _context.VotesHistories.AddAsync(vote);
+        }
+
+        public Task<int> SaveChanges()
+        {
+            return _context.SaveChangesAsync();
         }
 
         public async Task<bool> UserAlreadyVoted(string userId)
         {
-            if (GetVotesHistoryByUserId(userId) != null)
+            var voteHistory = await _context.VotesHistories.FirstOrDefaultAsync(x => x.UserId == userId);
+            if (voteHistory != null)
                 return true;
 
             return false;
