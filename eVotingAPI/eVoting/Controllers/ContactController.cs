@@ -28,7 +28,7 @@ namespace eVoting.App.Controllers
             if (responseContent == null)
                 return BadRequest(response.AddMessage("Error creating contact!").BadRequest());
 
-            return Ok(response.AddMessage("Contact has been created").Ok(responseContent));
+            return Ok(response.AddMessage("Mesazhi u ruajt me sukses").Ok(responseContent));
         }
     }
 }
