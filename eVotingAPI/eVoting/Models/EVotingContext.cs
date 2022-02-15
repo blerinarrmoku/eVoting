@@ -142,15 +142,11 @@ namespace eVoting.App.Models
 
             modelBuilder.Entity<Contact>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("Contact");
 
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(250);
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Message).IsRequired();
 

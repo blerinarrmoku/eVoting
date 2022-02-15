@@ -1,4 +1,5 @@
 ﻿using eVoting.App.Abstraction.Services.Contacts;
+using eVoting.App.Models;
 using eVoting.Model.Contacts.Commands.CreateContact;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -21,9 +22,20 @@ namespace eVoting.App.Handlers.Comtacts.Commands.CreateContact
             _contactService = contactService;
         }
 
-        public Task<CreateContactResponse> Handle(CreateContactCommand request, CancellationToken cancellationToken)
+        public async Task<CreateContactResponse> Handle(CreateContactCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var model = new Contact();
+            model.Email = request.Email;
+            model.Name = request.Name;
+            model.Message = request.Message;
+
+            await _contactService.AddMessageAsync(model);
+            var result = await _contactService.SaveChanges();
+            if (result < 1)
+            {
+                return null;
+            }
+            return new CreateContactResponse();
         }
     }
 }
