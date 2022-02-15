@@ -32,13 +32,13 @@ $(document).ready(function () {
             for(var i = 0;i < parties.length;i++){
                 partiesRow += 
                 `
-                    <div class="col-lg-12 col-6">
+                    <div class=" col-6">
                         <div class="d-flex flex-column align-items-center candidateParty p-3" value="${parties[i].id}">
                             <div>
-                                <img style="width: 200px;" class="img-fluid" src="${parties[i].imageUrl}" alt="Vetevendosje">
+                                <img style="width: 150px;" src="${parties[i].imageUrl}" alt="Vetevendosje">
                             </div>
-                            <div>
-                                <h6 class="text-center">${parties[i].name}</h6>
+                            <div class="text-center">
+                                <span>${parties[i].name}</span>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ $(document).ready(function () {
             data: JSON.stringify(_data),
             cache: false,
             success: function (result) {
-                console.log(result.status);
+                window.location.href = "/index.html";
             }
         });
     });
